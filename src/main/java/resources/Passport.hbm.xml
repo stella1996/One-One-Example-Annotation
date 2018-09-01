@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="model.Passport" table="passport" >
+		
+		<id name="personId" type="java.lang.Integer">
+			<column name="PERSON_ID" />
+			<generator class="foreign">
+				<param name="property">person</param>
+			</generator>
+		</id>
+		
+		<property name="passportNumber" type="string">
+			<column name="PASSPORT_NUMBER" length="100" not-null="true" />
+		</property>
+		<property name="passportId" type="java.lang.Integer">
+			<column name="PASSPORT_ID" not-null="true" />
+		</property>
+	<one-to-one name="person" class="model.Person"
+			constrained="true"></one-to-one>
+	</class>
+</hibernate-mapping>
